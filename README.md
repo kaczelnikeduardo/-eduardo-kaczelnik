@@ -82,4 +82,3 @@ Centro Universitário IBMR — Rio de Janeiro, Brazil
   <img src="https://github-readme-stats.vercel.app/api?username=kaczelnikeduardo&show_icons=true&theme=dark&hide_border=true" alt="Eduardo's GitHub Stats" />
 </p>
 
-<p align="center"><i>"Building one commit at a time."</i></p>
