@@ -1,0 +1,430 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@300;400;600;700&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body { background: transparent; }
+
+  .gh-wrapper {
+    font-family: 'Sora', sans-serif;
+    background: #0d1117;
+    color: #e6edf3;
+    border-radius: 12px;
+    padding: 32px;
+    max-width: 700px;
+    border: 1px solid #30363d;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+
+  .avatar {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f78166 0%, #e05c00 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px; font-weight: 700; color: #fff;
+    flex-shrink: 0;
+    border: 2px solid #30363d;
+  }
+
+  .name-block h1 { font-size: 22px; font-weight: 700; color: #e6edf3; }
+  .name-block .username { font-family: 'JetBrains Mono', monospace; color: #8b949e; font-size: 14px; margin-top: 2px; }
+  .name-block .location { color: #8b949e; font-size: 13px; margin-top: 6px; display: flex; align-items: center; gap: 5px; }
+
+  .bio {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #c9d1d9;
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+  }
+
+  .bio p { margin-bottom: 8px; }
+  .bio p:last-child { margin-bottom: 0; }
+
+  .typing-cursor {
+    display: inline-block;
+    width: 2px; height: 14px;
+    background: #f78166;
+    vertical-align: middle;
+    animation: blink 1s step-end infinite;
+    margin-left: 2px;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .section-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #f78166;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+  }
+
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    border: 1px solid;
+  }
+
+  .badge-blue { background: #0d2136; border-color: #1f6feb; color: #79c0ff; }
+  .badge-green { background: #0d2117; border-color: #238636; color: #56d364; }
+  .badge-orange { background: #2d1b00; border-color: #e05c00; color: #f78166; }
+  .badge-purple { background: #1c1138; border-color: #8957e5; color: #d2a8ff; }
+  .badge-teal { background: #00201a; border-color: #1f6f6f; color: #39d353; }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .stat-card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+  }
+
+  .stat-card .val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 20px;
+    font-weight: 700;
+    color: #f78166;
+  }
+
+  .stat-card .lbl {
+    font-size: 11px;
+    color: #8b949e;
+    margin-top: 2px;
+  }
+
+  .skill-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .skill-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #c9d1d9;
+  }
+
+  .skill-bar-bg {
+    width: 80px;
+    height: 5px;
+    background: #21262d;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .skill-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    animation: growBar 1.2s ease-out forwards;
+    transform-origin: left;
+  }
+
+  @keyframes growBar {
+    from { width: 0%; }
+  }
+
+  .cert-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+
+  .cert-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #c9d1d9;
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    padding: 7px 10px;
+  }
+
+  .cert-icon {
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .lang-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .lang-label { font-size: 12px; color: #c9d1d9; width: 80px; flex-shrink: 0; }
+
+  .lang-bar-bg {
+    flex: 1;
+    height: 6px;
+    background: #21262d;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .lang-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    animation: growBar 1.2s ease-out forwards;
+  }
+
+  .lang-level { font-size: 11px; color: #8b949e; min-width: 60px; text-align: right; }
+
+  .footer {
+    border-top: 1px solid #21262d;
+    padding-top: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: gap;
+  }
+
+  .contact-links { display: flex; gap: 12px; }
+
+  .contact-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #8b949e;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.2s;
+  }
+
+  .contact-link:hover { color: #f78166; }
+
+  .copy-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    background: #21262d;
+    border: 1px solid #30363d;
+    color: #c9d1d9;
+    border-radius: 6px;
+    padding: 5px 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background 0.2s;
+  }
+
+  .copy-btn:hover { background: #30363d; }
+  .copy-btn.copied { color: #56d364; border-color: #238636; }
+
+  hr.divider { border: none; border-top: 1px solid #21262d; margin: 16px 0; }
+</style>
+
+<div class="gh-wrapper">
+  <div class="header">
+    <div class="avatar">EK</div>
+    <div class="name-block">
+      <h1>Eduardo Sabino Kaczelnik</h1>
+      <div class="username">@eduardo-kaczelnik</div>
+      <div class="location"><i class="ti ti-map-pin" aria-hidden="true"></i> Rio de Janeiro, Brazil</div>
+    </div>
+  </div>
+
+  <div class="bio">
+    <p>🎓 Computer Science student @ Centro Universitário IBMR — 6th semester (2023–2027)</p>
+    <p>💻 Full Stack Developer in training · Cloud enthusiast · Cybersecurity learner</p>
+    <p>🔐 Passionate about web security, cloud infrastructure, and building things that just work.<span class="typing-cursor"></span></p>
+  </div>
+
+  <div class="section-title">⚡ Tech Stack</div>
+  <div class="badges">
+    <span class="badge badge-orange"><i class="ti ti-brand-html5" aria-hidden="true"></i> HTML / CSS</span>
+    <span class="badge badge-blue"><i class="ti ti-brand-javascript" aria-hidden="true"></i> JavaScript</span>
+    <span class="badge badge-blue"><i class="ti ti-coffee" aria-hidden="true"></i> Java</span>
+    <span class="badge badge-green"><i class="ti ti-brand-python" aria-hidden="true"></i> Python</span>
+    <span class="badge badge-purple"><i class="ti ti-cloud" aria-hidden="true"></i> AWS · GCP</span>
+    <span class="badge badge-teal"><i class="ti ti-shield" aria-hidden="true"></i> Cybersecurity</span>
+  </div>
+
+  <div class="section-title">📊 Skills</div>
+  <div class="skill-grid">
+    <div>
+      <div class="skill-row">
+        <span>Web Dev</span>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:80%;background:#f78166;"></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="skill-row">
+        <span>Full Stack</span>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:70%;background:#79c0ff;"></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="skill-row">
+        <span>Cloud</span>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:65%;background:#d2a8ff;"></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="skill-row">
+        <span>Cybersecurity</span>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:72%;background:#56d364;"></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="skill-row">
+        <span>Python</span>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:45%;background:#f78166;"></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="skill-row">
+        <span>Data Engineering</span>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:35%;background:#79c0ff;"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">🏆 Certifications highlight</div>
+  <div class="cert-list">
+    <div class="cert-item"><span class="cert-icon">🔐</span> PenTest+ · CISCO Junior Cyber Security Analyst · IBM Cybersecurity Tools & Attacks</div>
+    <div class="cert-item"><span class="cert-icon">☁️</span> AWS Cloud Technical Essentials · Google Cloud (2× Skill Badges)</div>
+    <div class="cert-item"><span class="cert-icon">🤖</span> MIT Intro to Generative AI · Microsoft Project Management with AI</div>
+    <div class="cert-item"><span class="cert-icon">📊</span> Power BI (Do Básico ao Profissional) · IBM Data Engineering</div>
+  </div>
+
+  <div class="section-title">💼 Experience</div>
+  <div class="cert-list">
+    <div class="cert-item">
+      <span class="cert-icon">🏢</span>
+      <span><strong>Office Assistant</strong> — JOFRA Auditoria e Contabilidade &nbsp;·&nbsp; Aug 2025 – Feb 2026<br>
+      <span style="color:#8b949e;font-size:11px;">DAS · SPED Digital Tax Bookkeeping · PIS/COFINS/ISS guides</span></span>
+    </div>
+  </div>
+
+  <div class="section-title">🌍 Languages</div>
+  <div style="margin-bottom:20px;">
+    <div class="lang-row">
+      <span class="lang-label">Portuguese</span>
+      <div class="lang-bar-bg"><div class="lang-bar-fill" style="width:100%;background:#f78166;"></div></div>
+      <span class="lang-level">Native</span>
+    </div>
+    <div class="lang-row">
+      <span class="lang-label">English</span>
+      <div class="lang-bar-bg"><div class="lang-bar-fill" style="width:85%;background:#79c0ff;"></div></div>
+      <span class="lang-level">Advanced</span>
+    </div>
+    <div class="lang-row">
+      <span class="lang-label">Spanish</span>
+      <div class="lang-bar-bg"><div class="lang-bar-fill" style="width:30%;background:#56d364;"></div></div>
+      <span class="lang-level">Basic</span>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:kaczelnikeduardo@gmail.com"><i class="ti ti-mail" aria-hidden="true"></i> kaczelnikeduardo@gmail.com</a>
+      <a class="contact-link" href="https://www.linkedin.com/in/eduardo-sabino-kaczelnik-79318623a"><i class="ti ti-brand-linkedin" aria-hidden="true"></i> LinkedIn</a>
+    </div>
+    <button class="copy-btn" id="mdBtn" onclick="copyMarkdown()"><i class="ti ti-copy" aria-hidden="true"></i> Copy README.md</button>
+  </div>
+</div>
+
+<script>
+const md = `# Hi there 👋 I'm Eduardo Kaczelnik
+
+🎓 Computer Science student @ Centro Universitário IBMR — 6th semester (2023–2027)  
+📍 Rio de Janeiro, Brazil  
+💻 Full Stack Developer in training | Cloud enthusiast | Cybersecurity learner  
+
+---
+
+## 🛠️ Tech Stack
+
+\`\`\`
+Languages:   HTML · CSS · JavaScript · Java · Python (basic)
+Cloud:       AWS · Google Cloud Platform
+Security:    PenTest+ · CISCO CyberSec · IBM Security Tools
+Tools:       Power BI · Git
+\`\`\`
+
+---
+
+## 💼 Experience
+
+**Office Assistant** — JOFRA Auditoria e Contabilidade  
+*Aug 2025 – Feb 2026*  
+- Issuance of Simples Nacional Collection Documents (DAS)
+- Digital Tax Bookkeeping (SPED / EFD)
+- Generation of PIS, COFINS, and ISS guides
+
+---
+
+## 🏆 Certifications
+
+| Area | Certifications |
+|------|---------------|
+| 🔐 Security | PenTest+ · CISCO Junior Cyber Security Analyst · IBM Cybersecurity Tools & Attacks · CISCO Endpoint Security |
+| ☁️ Cloud | AWS Cloud Technical Essentials · Google Cloud Skill Badges (×2) |
+| 🤖 AI / Data | MIT Intro to Generative AI · Microsoft PM with AI · IBM Data Engineering · Power BI |
+| 💻 Dev | DIO JavaScript · IBMR Data Structures & Algorithms · IBMR Compilation Theory |
+
+---
+
+## 🌍 Languages
+
+- 🇧🇷 **Portuguese** — Native  
+- 🇺🇸 **English** — Advanced  
+- 🇪🇸 **Spanish** — Basic  
+
+---
+
+## 📬 Contact
+
+[![Email](https://img.shields.io/badge/Email-kaczelnikeduardo@gmail.com-red?style=flat&logo=gmail)](mailto:kaczelnikeduardo@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Eduardo_Kaczelnik-blue?style=flat&logo=linkedin)](https://www.linkedin.com/in/eduardo-sabino-kaczelnik-79318623a)
+`;
+
+function copyMarkdown() {
+  navigator.clipboard.writeText(md).then(() => {
+    const btn = document.getElementById('mdBtn');
+    btn.classList.add('copied');
+    btn.innerHTML = '<i class="ti ti-check" aria-hidden="true"></i> Copied!';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<i class="ti ti-copy" aria-hidden="true"></i> Copy README.md';
+    }, 2000);
+  });
+}
+</script>
